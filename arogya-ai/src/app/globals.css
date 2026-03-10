@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --zen-cream: #f5f0e8;
+  --zen-warm: #ede8dc;
+  --zen-sand: #d4c9b0;
+  --zen-brown: #8b7355;
+  --zen-dark: #3d3328;
+  --zen-sage: #7c9a7e;
+  --zen-sage-light: #a8c4aa;
+  --zen-rose: #c4917a;
+  --zen-muted: #9e9185;
+  --zen-white: #fdfcf9;
+  --zen-shadow: 0 4px 24px rgba(61,51,40,0.08);
+  --zen-shadow-lg: 0 8px 40px rgba(61,51,40,0.14);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--zen-cream);
+  color: var(--zen-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(253, 252, 249, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 201, 176, 0.4);
+  border-radius: 20px;
+  box-shadow: var(--zen-shadow);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--zen-warm); }
+::-webkit-scrollbar-thumb { background: var(--zen-sand); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--zen-brown); }
+
+/* Form inputs */
+.zen-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--zen-white);
+  border: 1.5px solid var(--zen-sand);
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--zen-dark);
+  transition: var(--transition);
+  outline: none;
+}
+.zen-input:focus {
+  border-color: var(--zen-sage);
+  box-shadow: 0 0 0 3px rgba(124, 154, 126, 0.15);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--zen-sage) 0%, #5a8060 100%);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 13px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124,154,126,0.35);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--zen-brown);
+  border: 1.5px solid var(--zen-sand);
+  border-radius: 14px;
+  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-ghost:hover {
+  background: var(--zen-warm);
+  border-color: var(--zen-brown);
+}
+
+/* Zen floating shapes bg */
+.zen-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.zen-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  animation: float 12s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeInUp 0.5s ease-out forwards; }
+.fade-in-delay { animation: fadeInUp 0.5s 0.15s ease-out forwards; opacity: 0; }
+.fade-in-delay-2 { animation: fadeInUp 0.5s 0.3s ease-out forwards; opacity: 0; }
+
+/* Shimmer - used in Gemini processing progress bar */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
